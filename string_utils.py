@@ -1,4 +1,5 @@
 def split_before_uppercases(formula):
+    
     parts = []
     current = ""
     
@@ -15,30 +16,28 @@ def split_before_uppercases(formula):
     return parts
 
 def split_at_digit(formula):
-   prefix = ""
-   number_part = ""
-    
-   for char in formula:
-       if char.isdigit():
-           number_part += char
+    prefix = ""
+    number_part = ""
+    for char in formula:
+        if char.isdigit():
+            number_part += char
        elif number_part == "":
            prefix += char
        else:
            number_part += char
-           
     if number_part:
-       digits = ""
-       for c in number_part:
-           if c.isdigit():
+        digits = ""
+        for c in number_part:
+            if c.isdigit():
                digits += c
            else:
                break
        return (prefix, int(digits))
     
-   return (formula, 1)
+    return (formula, 1)
 
 def count_atoms_in_molecule(molecular_formula):
-   molecules_with_counter = {}
+    molecules_with_counter = {}
 
     for atom in split_before_uppercases(molecular_formula):
         atom_name, atom_count = split_at_digit(atom)
@@ -47,12 +46,11 @@ def count_atoms_in_molecule(molecular_formula):
         else:
          molecules_with_counter[atom_name] = atom_count   
         
-   return molecules_with_counter
+    return molecules_with_counter
 
 
 
 def parse_chemical_reaction(reaction_equation):
-   
     reaction_equation = reaction_equation.replace(" ", "")  # Remove spaces for easier parsing
     reactants, products = reaction_equation.split("->")
     return reactants.split("+"), products.split("+")
