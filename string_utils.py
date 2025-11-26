@@ -15,37 +15,38 @@ def split_before_uppercases(formula):
     return parts
 
 def split_at_digit(formula):
-    prefix = ""
-    number_part = ""
+   prefix = ""
+   number_part = ""
     
-    for char in formula:
-        if char.isdigit():
-            number_part += char
-        elif number_part == "":
-            prefix += char
-        else:
-            number_part += char
-    
+   for char in formula:
+       if char.isdigit():
+           number_part += char
+       elif number_part == "":
+           prefix += char
+       else:
+           number_part += char
+           
     if number_part:
-        digits = ""
-        for c in number_part:
-            if c.isdigit():
-                digits += c
-            else:
-                break
-        return (prefix, int(digits))
+       digits = ""
+       for c in number_part:
+           if c.isdigit():
+               digits += c
+           else:
+               break
+       return (prefix, int(digits))
     
-    return (formula, 1)
+   return (formula, 1)
 
 def count_atoms_in_molecule(molecular_formula):
-    molecules_with_counter = {}
+   molecules_with_counter = {}
 
     for atom in split_before_uppercases(molecular_formula):
         atom_name, atom_count = split_at_digit(atom)
-        molecules_with_counter[atom_name] = atom_count
+        if atom_name in molecules_with_counter:
+           molecules_with_counter[atom_name] += atom_count
+        else:
+         molecules_with_counter[atom_name] = atom_count   
         
-         
-
    return molecules_with_counter
 
 
