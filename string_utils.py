@@ -1,8 +1,7 @@
 def split_before_uppercases(formula):
-    
     parts = []
     current = ""
-    
+
     for char in formula:
         if char.isupper():
             if current:
@@ -10,32 +9,26 @@ def split_before_uppercases(formula):
             current = char
         else:
             current += char
+
     if current:
         parts.append(current)
-    
+
     return parts
 
-def split_at_digit(formula):
+
+def split_at_digit(fragment):
     prefix = ""
-    number_part = ""
-    for char in formula:
+    digits = ""
+
+    for char in fragment:
         if char.isdigit():
-            number_part += char
-       elif number_part == "":
-           prefix += char
-       else:
-           number_part += char
-    if number_part:
-        digits = ""
-        for c in number_part:
-            
-            if c.isdigit():
-               digits += c
-            else:
-               break
-        return (prefix, int(digits))
-    
-    return (formula, 1)
+            digits += char
+        else:
+            prefix += char
+
+    # default count = 1
+    count = int(digits) if digits else 1
+    return prefix, count
 
 def count_atoms_in_molecule(molecular_formula):
     molecules_with_counter = {}
