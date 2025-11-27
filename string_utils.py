@@ -28,11 +28,12 @@ def split_at_digit(formula):
     if number_part:
         digits = ""
         for c in number_part:
+            
             if c.isdigit():
                digits += c
-           else:
+            else:
                break
-       return (prefix, int(digits))
+        return (prefix, int(digits))
     
     return (formula, 1)
 
