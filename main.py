@@ -1,6 +1,6 @@
 import string_utils as stt
 
-import equation_utils equ
+import equation_utils as equ
 
 
 
