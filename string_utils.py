@@ -16,19 +16,19 @@ def split_before_uppercases(formula):
     return parts
 
 
-def split_at_digit(fragment):
-    prefix = ""
-    digits = ""
+def split_at_digit(formula):
 
-    for char in fragment:
-        if char.isdigit():
-            digits += char
-        else:
-            prefix += char
+  prefix = ""
+  digits = ""
 
-    # default count = 1
-    count = int(digits) if digits else 1
-    return prefix, count
+  for char in formula:
+      if char.isdigit():
+          digits += char
+      else:
+          prefix += char
+
+  count = int(digits) if digits else 1
+  return prefix, count
 
 def count_atoms_in_molecule(molecular_formula):
     molecules_with_counter = {}
